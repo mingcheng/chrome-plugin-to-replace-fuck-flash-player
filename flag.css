@@ -15,7 +15,7 @@ z#html5-player {
     right: 10px;
     font-size: 14px;
     line-height: 25px;
-    cursor: default;
+    cursor: pointer;
     color: #fff;
     user-select: none;
     border-radius: 5px;

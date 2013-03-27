@@ -31,6 +31,20 @@
     var ATTR_VIDEO_ADDRESS = "data-video-url";
     var isSupportM3U8 = (document.createElement('video').canPlayType('application/x-mpegURL')) ? true : false;
     var PLAYER_SCRIPT_URL = "http://vjs.zencdn.net/c/video.js", PLAYER_CSS_URL = "http://vjs.zencdn.net/c/video-js.css";
+    var replacedElement, orgialHTML;
+
+    var flagElement = document.createElement("z");
+        flagElement.setAttribute("id", "html5-player");
+        flagElement.setAttribute("title", "Click to resume original player.");
+        flagElement.innerHTML = "Embedded HTML5 Player";
+
+    flagElement.addEventListener("click", function(e) {
+        if (replacedElement) {
+            replacedElement.innerHTML = orgialHTML;
+        }
+
+        flagElement.parentNode.removeChild(flagElement);
+    });
 
     function getScript(url, success, error) {
          var script = document.createElement("script");
@@ -58,12 +72,8 @@
         log("HTML5 Video Founded, The address is " + url);
         //<z id="html5-player">正在使用 HTML5 播放器</z>
 
-        var flag = document.createElement("z");
-            flag.setAttribute("id", "html5-player");
-            flag.setAttribute(ATTR_VIDEO_ADDRESS, url);
-            flag.innerHTML = "Embedded HTML5 Player";
-
-        document.body.appendChild(flag);
+        flagElement.setAttribute(ATTR_VIDEO_ADDRESS, url);
+        document.body.appendChild(flagElement);
         document.body.setAttribute(ATTR_VIDEO_ADDRESS, url);
     };
 
@@ -76,6 +86,10 @@
         '</video>';
 
         if (!element || !url.length) {return;}
+
+        replacedElement = element;
+        orgialHTML = element.innerHTML;
+
         element.innerHTML = html;
         markVideoUrl(url);
 
