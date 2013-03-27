@@ -21,7 +21,6 @@
 
     "web_accessible_resources": [
         "seed.js",
-        "sites/base.js",
         "sites/youku.js",
         "sites/tudou.js"
     ],
@@ -37,7 +36,7 @@
             "http://*.youku.com/*",
             "http://*.tudou.com/*"
         ],
-        "js": ["sites/base.js", "content.js"],
+        "js": ["seed.js", "content.js"],
         "css": ["styles/popup.css"]
     }]
 }

@@ -41,11 +41,9 @@
          }
          log("Found " + type.toUpperCase() + " video tag, continue.");
 
-         getScript(getExtensionUrl("sites/base.js"), function() {
-             getScript(getExtensionUrl("sites/" + type + ".js"));
-         });
+         getScript(getExtensionUrl("sites/" + type + ".js"));
      };
 
      getScript(getExtensionUrl("seed.js"), init);
-}();
+} ();
 
