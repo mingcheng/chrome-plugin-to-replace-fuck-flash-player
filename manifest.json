@@ -1,0 +1,44 @@
+﻿{
+    "manifest_version": 2,
+    "default_locale": "zh_CN",
+    "name": "__MSG_extName__",
+    "version": "0.0.1",
+    "description": "__MSG_extDesp__",
+    "icons": { "128": "empty.png", "32":"empty.png" },
+    "options_page": "options.html",
+
+    /*
+    "browser_action": {
+        "default_icon": "empty.png",
+        "default_popup": "popup.html"
+    },
+    */
+    "permissions": [
+        "tabs",
+        "storage",
+        "unlimitedStorage",
+        "<all_urls>"
+    ],
+
+    "web_accessible_resources": [
+        "seed.js",
+        "sites/base.js",
+        "sites/youku.js",
+        "sites/tudou.js"
+    ],
+
+    "background": {
+        "scripts": ["background.js"],
+        "persistent": false
+    },
+
+    "content_scripts": [{
+        "run_at": "document_end",
+        "matches": [
+            "http://*.youku.com/*",
+            "http://*.tudou.com/*"
+        ],
+        "js": ["sites/base.js", "content.js"],
+        "css": ["styles/popup.css"]
+    }]
+}

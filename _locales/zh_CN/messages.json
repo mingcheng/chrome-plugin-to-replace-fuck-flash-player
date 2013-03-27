@@ -1,0 +1,17 @@
+{
+    "extName": {
+        "message": "看视频不再发烫"
+    },
+
+    "extDesp": {
+        "message": "替换主流视频站点的 Flash 播放器为 HTML5 播放器，减少资源消耗"
+    },
+
+    "waiting": {
+        "message": "请稍候…"
+    },
+
+    "notfound": {
+        "message": "抱歉，没有找到需要的结果"
+    }
+}
