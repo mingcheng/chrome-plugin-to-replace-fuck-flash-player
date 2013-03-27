@@ -36,7 +36,6 @@
 
     if (ToolKit.isSupportM3U8) {
         var url = "/player/getM3U8/vid/" + videoId + "/type/mp4/ts/" + (((new Date()).getTime()/1000).toString()|0) + "/v.m3u8";
-        ToolKit.markVideoUrl(url);
         ToolKit.launchPlayer(document.getElementById("player"), url);
     } else {
         var callbackStep1 = "_" + Math.round(+new Date() * Math.random());
@@ -64,7 +63,6 @@
        window[callbackStep2] = function(spec) {
             var url = spec[0]['server'];
             if (url.length) {
-                ToolKit.markVideoUrl(url);
                 ToolKit.launchPlayer(document.getElementById("player"), url);
             }
        }

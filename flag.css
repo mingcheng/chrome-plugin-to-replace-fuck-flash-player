@@ -1,0 +1,28 @@
+/* vim: set et sw=4 ts=4 sts=4 ft=css fdm=marker ff=unix fenc=utf8 nobomb: */
+/**
+ * @author mingcheng<lucky#gracecode.com>
+ * @date   2013-03-27
+ * @link   http://www.gracecode.com/
+ */
+
+z#html5-player {
+    display: block;
+    position: fixed;
+    z-index: 99999;
+    height: 25px;
+    bottom: 10px;
+    opacity: .7;
+    right: 10px;
+    font-size: 14px;
+    line-height: 25px;
+    cursor: default;
+    color: #fff;
+    user-select: none;
+    border-radius: 5px;
+    padding: 2px 5px 2px 25px;
+    background-size: 16px 16px;
+    box-shadow: 0 0 20px #000;
+    background: #000 no-repeat scroll 5px center;
+    background-size: 16px 16px;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAs1JREFUeNq8VztvE0EQnnsFxbJxlCAEIiAoiC0qOxJpkCAoHRIKLR0VFRJdWugQBRX8EBASDUIkSGlC4XTEpsDiIVEAcsA6x77Hsrs5+24ft7d+6FY6rc8+z8x+M983cwbg9f32yjre3kO+6+by69a2Gd3sQ/6L+jSGdxgFNImVwqKp/WwwAOh3Q/oZn576tqc9hjVnjBGAeEaThyRP+HkEOkJ01brSimGYYJ+ey/TmN/fojhASfClT4Gy9UBp2HAcK5XJmAH/vXzlOgQfKFOzwP6Kvn6fGOmh9lH29IwtAWKjXnWniUSAWobIGhNPsvgH49TM2aJnQX5pX/if8/SP+HICyBgQWoIMGQCUuxBAHEJLvEqt/xpqKBWZevAt9uc4lA2gLCLj/2Icrq5PnP2RuR74YGePlmOiAioqEhuUMGrrP7lEdICro/mFlONcUkD6QlQKhEJE7PQ2Db59A5YNXwg4vRGGzkW7csiFYLLInWq6CUSgJdSSTYa1u6D19kP4bMcDRsPjkLRPAKFhPbsOWwLPOPHD3IRgXLmsFRBFYOpeA/0CpAbIADoWOh52blfpkBdCLaRxngPUxNguMU2fTh5Pz1XQh8pBWCrbx9UjoiAkEnK3ntDCJTAeNDzjfNti1DbBX1sCqXJXOARIf+kUIHBUJAhZB4dotmHceQ0ljHkg0oUwd6MxSfEYUZNsw40OYKGXTMZFks36dFmOSETIpJpXv77+jg8gwBWkyrD0VkxY8asOFIlg4GIP0ibUN3OW6EDSxs9Yedcw3MBqAryhqCQJf8HZRF+aSxjww6KLh+0AbI3Api4btmfR/XHheD8HRYQgDN0y1bc+y6Eiu/T6+Bum8z0xB4mV1M5LlmsrAiZPmseMjpBq/CPdfkZdRrQC4YBbwdgdfN6J9IeMv7cghGb1fYqedsRHICKgWIbOZaFz0hGTHDsd6xfsvwAB8ABqbrMgqHwAAAABJRU5ErkJggg==);
+}

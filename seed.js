@@ -54,6 +54,19 @@
         console.log("[HTML5 Player] " + message);
     };
 
+    function markVideoUrl(url) {
+        log("HTML5 Video Founded, The address is " + url);
+        //<z id="html5-player">正在使用 HTML5 播放器</z>
+
+        var flag = document.createElement("z");
+            flag.setAttribute("id", "html5-player");
+            flag.setAttribute(ATTR_VIDEO_ADDRESS, url);
+            flag.innerHTML = "Embedded HTML5 Player";
+
+        document.body.appendChild(flag);
+        document.body.setAttribute(ATTR_VIDEO_ADDRESS, url);
+    };
+
     function launchPlayer(element, url, success) {
         var width = element.clientWidth, height = element.clientHeight;
         var html  = 
@@ -62,7 +75,10 @@
             '<source src="'+ url +'" type="video/mp4" />' +
         '</video>';
 
+        if (!element || !url.length) {return;}
         element.innerHTML = html;
+        markVideoUrl(url);
+
         loadCSS(PLAYER_CSS_URL);
         getScript(PLAYER_SCRIPT_URL, success);
     };
@@ -73,10 +89,7 @@
         isSupportM3U8: isSupportM3U8,
         launchPlayer: launchPlayer,
         log: log,
-        markVideoUrl: function(url) {
-            log("HTML5 Video Founded, The address is " + url);
-            document.body.setAttribute(ATTR_VIDEO_ADDRESS, url);
-        },
+        markVideoUrl: markVideoUrl,
         getVideoUrl: function() {
              var body  = document.body, value = body.getAttribute(ATTR_VIDEO_ADDRESS);
              if (!value) {
