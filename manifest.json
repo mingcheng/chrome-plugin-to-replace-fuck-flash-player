@@ -5,32 +5,18 @@
     "version": "0.1.2",
     "description": "__MSG_extDesp__",
     "icons": { "128": "icon_128.png", "32":"icon_32.png" },
-    //"options_page": "options.html",
-    /*
-    "browser_action": {
-        "default_icon": "empty.png",
-        "default_popup": "popup.html"
-    },
-    */
     "permissions": [
         "tabs",
         "storage",
         "unlimitedStorage",
         "<all_urls>"
     ],
-
     "web_accessible_resources": [
         "flag.css",
         "seed.js",
         "sites/youku.js",
         "sites/tudou.js"
     ],
-
-    "background": {
-        "scripts": ["background.js"],
-        "persistent": false
-    },
-
     "content_scripts": [{
         "run_at": "document_end",
         "matches": [
