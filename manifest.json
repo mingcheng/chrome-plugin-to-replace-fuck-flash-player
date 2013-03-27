@@ -6,7 +6,6 @@
     "description": "__MSG_extDesp__",
     "icons": { "128": "empty.png", "32":"empty.png" },
     "options_page": "options.html",
-
     /*
     "browser_action": {
         "default_icon": "empty.png",

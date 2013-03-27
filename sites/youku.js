@@ -37,30 +37,36 @@
     if (ToolKit.isSupportM3U8) {
         var url = "/player/getM3U8/vid/" + videoId + "/type/mp4/ts/" + (((new Date()).getTime()/1000).toString()|0) + "/v.m3u8";
         ToolKit.markVideoUrl(url);
-        alert(url);
+        ToolKit.launchPlayer(document.getElementById("player"), url);
     } else {
         var callbackStep1 = "_" + Math.round(+new Date() * Math.random());
         var callbackStep2 = "_" + Math.round(+new Date() * Math.random());
 
         window[callbackStep1] = function(spec) {
-        	var d      = new Date();
-			var fileid = getFileID(spec.data[0]['streamfileids']['3gphd'], spec.data[0]['seed']);
-			var sid    = d.getTime() + "" + (1E3 + d.getMilliseconds()) + "" + (parseInt(Math.random() * 9E3));
-			var k      = spec.data[0]['segs']['3gphd'][0]['k'];
-			var st     = spec.data[0]['segs']['3gphd'][0]['seconds'];
-            var requestStep2  = 
-                'http://f.youku.com/player/getFlvPath/sid/'+ sid +'_00/st/mp4/fileid/'+ fileid +'?K='+ k +'&hd=1&myp=0&ts=1156&ypp=0&ymovie=1&callback=' + callbackStep2;
+            try {
+                var d      = new Date();
+                var fileid = getFileID(spec.data[0]['streamfileids']['3gphd'], spec.data[0]['seed']);
+                var sid    = d.getTime() + "" + (1E3 + d.getMilliseconds()) + "" + (parseInt(Math.random() * 9E3));
+                var k      = spec.data[0]['segs']['3gphd'][0]['k'];
+                var st     = spec.data[0]['segs']['3gphd'][0]['seconds'];
+                var requestStep2  = 
+                    'http://f.youku.com/player/getFlvPath/sid/'+ sid +'_00/st/mp4/fileid/'+ fileid +'?K='+ k +'&hd=1&myp=0&ts=1156&ypp=0&ymovie=1&callback=' + callbackStep2;
 
-            getScript(requestStep2, function() {
-                log("Finished YOUKU step2 request, almost here!");
-                delete window[callbackStep2];
-            });
+                getScript(requestStep2, function() {
+                    log("Finished YOUKU step2 request, almost here!");
+                    delete window[callbackStep2];
+                });
+            } catch(e) {
+                //console.error(e);
+            }
        }
 
        window[callbackStep2] = function(spec) {
             var url = spec[0]['server'];
-            ToolKit.markVideoUrl(url);
-            alert(url);
+            if (url.length) {
+                ToolKit.markVideoUrl(url);
+                ToolKit.launchPlayer(document.getElementById("player"), url);
+            }
        }
 
        var requestStep1  = 'http://v.youku.com/player/getPlaylist/VideoIDS/'+ videoId +'/Pf/4?__callback=' + callbackStep1;

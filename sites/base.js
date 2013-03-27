@@ -8,6 +8,7 @@
 ~function(cscope) {
     var ATTR_VIDEO_ADDRESS = "data-video-url";
     var isSupportM3U8 = (document.createElement('video').canPlayType('application/x-mpegURL')) ? true : false;
+    var PLAYER_SCRIPT_URL = "http://vjs.zencdn.net/c/video.js", PLAYER_CSS_URL = "http://vjs.zencdn.net/c/video-js.css";
 
     function getScript(url, success, error) {
          var script = document.createElement("script");
@@ -17,14 +18,38 @@
          document.body.appendChild(script);
     };
 
+    function loadCSS(url) {
+        var head  = document.getElementsByTagName('head')[0];
+        var link  = document.createElement('link');
+            link.rel  = 'stylesheet';
+            link.type = 'text/css';
+            link.href = url;
+            link.media = 'all';
+        head.appendChild(link);
+    };
+
     function log(message) {
         console.log("[HTML5 Player] " + message);
     };
 
+    function launchPlayer(element, url, success) {
+        var width = element.clientWidth, height = element.clientHeight;
+        var html  = 
+        '<video id="my_video_1" class="video-js vjs-default-skin" controls="controls" '+ 
+            ' preload="metadata" width="'+ width +'" height="'+ height +'">' +
+            '<source src="'+ url +'" type="video/mp4" />' +
+        '</video>';
+
+        element.innerHTML = html;
+        loadCSS(PLAYER_CSS_URL);
+        getScript(PLAYER_SCRIPT_URL, success);
+    };
+
     cscope.HTML5PlayerToolKit = {
-        log: log,
-        isSupportM3U8: isSupportM3U8,
         getScript: getScript,
+        isSupportM3U8: isSupportM3U8,
+        launchPlayer: launchPlayer,
+        log: log,
         markVideoUrl: function(url) {
             log("HTML5 Video Founded, The address is " + url);
             document.body.setAttribute(ATTR_VIDEO_ADDRESS, url);
