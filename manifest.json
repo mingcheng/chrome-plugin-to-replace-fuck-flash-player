@@ -15,6 +15,7 @@
         "flag.css",
         "seed.js",
         "sites/youku.js",
+        "sites/sina.js",
         "sites/56.js",
         "sites/tudou.js"
     ],
@@ -23,6 +24,7 @@
         "matches": [
             "http://*.56.com/*",
             "http://*.youku.com/*",
+            "http://*.sina.com.cn/*",
             "http://*.tudou.com/*"
         ],
         "js": ["seed.js", "content.js"],

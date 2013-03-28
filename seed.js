@@ -7,7 +7,7 @@
 
 ~function() {
     // http://developer.chrome.com/extensions/content_scripts.html
-    var flags = ['videoId', 'iid', 'vid', 'info', 'COVER_INFO', 'XL_CLOUD_FX_INSTANCE', '_page_', 'aid', 'system'];
+    var flags = ['videoId', 'iid', '$SCOPE', 'vid', 'info', 'COVER_INFO', 'XL_CLOUD_FX_INSTANCE', '_page_', 'aid', 'system'];
 
     for(var i = 0; i < flags.length; i++) {
         var flag = flags[i], value = window[flag];
@@ -15,7 +15,17 @@
             flag  = 'videoId';
             value = window[flag]['videoId'];
         }
-        document.body.setAttribute("data-" + flag, value || "");
+
+        if (flag == '$SCOPE' && window[flag]) {
+            value = window[flag]['video']['vid'];
+            flag = 'SCOPE';
+        }
+
+        try {
+            document.body.setAttribute("data-" + flag, value || "");
+        }catch(e) {
+            // ...
+        }
     }
 }();
 

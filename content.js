@@ -28,12 +28,12 @@
          if(/sohu\.com/.test(host)  && getVideoFlag('vid'))                             type = "sohu";
          if(/iqiyi\.com/.test(host) && getVideoFlag('videoId'))                         type = "iqiyi";
          if(/letv\.com/.test(host)  && document.getElementById('fla_box'))              type = "letv";
-         // if(/video\.sina\.com\.cn/.test(host) && window.$SCOPE && $SCOPE.video)          type = "sina";
+         if(/video\.sina\.com\.cn/.test(host) && getVideoFlag('SCOPE'))                 type = "sina";
          if(/v\.qq\.com/.test(host) && getVideoFlag('COVER_INFO'))                      type = 'qq';
          if(getVideoFlag('XL_CLOUD_FX_INSTANCE'))                                       type = 'xunlei';
          if(/56\.com/.test(host) && getVideoFlag('_page_'))                             type = '56';
-         if(/bilibili\.tv/.test(host) && getVideoFlag('aid'))                           type = 'bilibili';
-         if(/acfun\.tv/.test(host) && getVideoFlag('system'))                           type = 'acfun';
+         //if(/bilibili\.tv/.test(host) && getVideoFlag('aid'))                           type = 'bilibili';
+         //if(/acfun\.tv/.test(host) && getVideoFlag('system'))                           type = 'acfun';
 
          if(!type) {
              log("Not found any video, ignore.");
@@ -44,6 +44,8 @@
          getScript(getExtensionUrl("sites/" + type + ".js"));
      };
 
-     getScript(getExtensionUrl("seed.js"), init);
+     window.addEventListener("load", function() {
+        getScript(getExtensionUrl("seed.js"), init);
+     });
 } ();
 
