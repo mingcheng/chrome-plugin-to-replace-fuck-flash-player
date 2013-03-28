@@ -15,11 +15,13 @@
         "flag.css",
         "seed.js",
         "sites/youku.js",
+        "sites/56.js",
         "sites/tudou.js"
     ],
     "content_scripts": [{
         "run_at": "document_end",
         "matches": [
+            "http://*.56.com/*",
             "http://*.youku.com/*",
             "http://*.tudou.com/*"
         ],

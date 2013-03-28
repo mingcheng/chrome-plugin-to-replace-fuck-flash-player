@@ -110,7 +110,10 @@
                  return false;
              }
              return value;
-        }
+         },
+         getUniqString: function() {
+            return "_" + Math.round(+new Date() * Math.random());
+         }
     }
 }(window);
 

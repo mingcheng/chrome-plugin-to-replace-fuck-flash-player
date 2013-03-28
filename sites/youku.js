@@ -38,8 +38,8 @@
         var url = "/player/getM3U8/vid/" + videoId + "/type/mp4/ts/" + (((new Date()).getTime()/1000).toString()|0) + "/v.m3u8";
         ToolKit.launchPlayer(document.getElementById("player"), url);
     } else {
-        var callbackStep1 = "_" + Math.round(+new Date() * Math.random());
-        var callbackStep2 = "_" + Math.round(+new Date() * Math.random());
+        var callbackStep1 = ToolKit.getUniqString();
+        var callbackStep2 = ToolKit.getUniqString();
 
         window[callbackStep1] = function(spec) {
             try {

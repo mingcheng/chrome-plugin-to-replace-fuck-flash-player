@@ -22,7 +22,7 @@
         var url = 'http://m3u8.tdimg.com/'+idEncodeed+'/'+'99.m3u8';
         ToolKit.launchPlayer(playerPlaceholder, url);
     } else {
-        var callback = "_" + Math.round(+new Date() * Math.random());
+        var callback = ToolKit.getUniqString();
 		var requestUrl = 'http://vr.tudou.com/v2proxy/v2.js?it='+iid+'&st=52%2C53%2C54&pw=&jsonp=' + callback;
 
         // ...
