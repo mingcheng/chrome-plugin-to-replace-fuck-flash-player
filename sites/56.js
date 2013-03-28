@@ -35,9 +35,8 @@
                             url = tmp;
                         }
                     }
-                    if (url.length) {
-                        ToolKit.launchPlayer(playerPlaceholder, url);
-                    }
+
+                    ToolKit.launchPlayer(playerPlaceholder, url);
                 } else {
                     log("Sorry not found any video address.");
                 }
