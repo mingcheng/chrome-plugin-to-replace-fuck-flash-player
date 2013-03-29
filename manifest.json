@@ -16,6 +16,7 @@
         "seed.js",
         "sites/youku.js",
         "sites/sina.js",
+        "sites/sohu.js",
         "sites/qq.js",
         "sites/56.js",
         "sites/iqiyi.js",
@@ -28,6 +29,7 @@
             "http://*.youku.com/*",
             "http://*.video.qq.com/*",
             "http://*.iqiyi.com/*",
+            "http://*.tv.sohu.com/*",
             "http://*.v.qq.com/*",
             "http://*.sina.com.cn/*",
             "http://*.tudou.com/*"
