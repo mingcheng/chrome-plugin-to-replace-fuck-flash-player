@@ -10,16 +10,12 @@
     var flags = ['videoId', 'iid', '$SCOPE', 'vid', 'info', 'COVER_INFO', 'XL_CLOUD_FX_INSTANCE', '_page_', 'aid', 'system'];
 
     for(var i = 0; i < flags.length; i++) {
-        var flag = flags[i], value = window[flag];
-        if (flag == 'info' && window[flag]) {
-            flag  = 'videoId';
-            value = window[flag]['videoId'];
-        }
+            var flag = flags[i], value = window[flag];
 
-        if (flag == '$SCOPE' && window[flag]) {
-            value = window[flag]['video']['vid'];
-            flag = 'SCOPE';
-        }
+            if (flag == '$SCOPE' && window[flag]) {
+                value = window[flag]['video']['vid'];
+                flag = 'SCOPE';
+            }
 
         try {
             document.body.setAttribute("data-" + flag, value || "");

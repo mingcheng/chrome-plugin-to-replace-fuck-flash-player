@@ -26,7 +26,7 @@
          if(/youku\.com/.test(host) && getVideoFlag('videoId'))                         type = "youku";
          if(/tudou\.com/.test(host) && getVideoFlag('iid'))                             type = "tudou";
          if(/sohu\.com/.test(host)  && getVideoFlag('vid'))                             type = "sohu";
-         if(/iqiyi\.com/.test(host) && getVideoFlag('videoId'))                         type = "iqiyi";
+         if(/iqiyi\.com/.test(host) && getVideoFlag('info'))                            type = "iqiyi";
          if(/letv\.com/.test(host)  && document.getElementById('fla_box'))              type = "letv";
          if(/video\.sina\.com\.cn/.test(host) && getVideoFlag('SCOPE'))                 type = "sina";
          if(/v\.qq\.com/.test(host) && getVideoFlag('COVER_INFO'))                      type = 'qq';

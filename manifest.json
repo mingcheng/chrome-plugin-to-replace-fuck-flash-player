@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "default_locale": "zh_CN",
     "name": "__MSG_extName__",
-    "version": "0.1.5",
+    "version": "0.1.6",
     "description": "__MSG_extDesp__",
     "icons": { "128": "icon_128.png", "32":"icon_32.png" },
     "permissions": [
@@ -18,6 +18,7 @@
         "sites/sina.js",
         "sites/qq.js",
         "sites/56.js",
+        "sites/iqiyi.js",
         "sites/tudou.js"
     ],
     "content_scripts": [{
@@ -26,6 +27,7 @@
             "http://*.56.com/*",
             "http://*.youku.com/*",
             "http://*.video.qq.com/*",
+            "http://*.iqiyi.com/*",
             "http://*.v.qq.com/*",
             "http://*.sina.com.cn/*",
             "http://*.tudou.com/*"
