@@ -86,7 +86,7 @@
     function launchPlayer(element, url, success) {
         var width = element.clientWidth, height = element.clientHeight;
         var html  = 
-        '<video id="my_video_1" class="video-js vjs-default-skin" controls="controls" '+ 
+        '<video id="my_video_1" autoplay="autoplay" class="video-js vjs-default-skin" controls="controls" '+ 
             ' preload="auto" width="'+ width +'" height="'+ height +'">' +
             '<source src="'+ url +'" type="video/mp4" />' +
         '</video>';

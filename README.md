@@ -26,6 +26,18 @@ https://chrome.google.com/webstore/detail/ddfddmjlhkoabjekmjidfakeckoncmno/
 
 和其他安装 Chrome 插件一样，点击安装即可。
 
+
+## 捐赠
+
+任何一件事情的持续发展和改进都需要作者不断的努力和精力。如果您觉得这个插件对您有帮助，感谢您能够鼓励作者继续坚持下去！
+
+[![Donate](https://www.paypal.com/en_US/i/btn/x-click-but04.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=94KDS88JDZF3Y)
+
+### 捐赠列表
+
+1. 暂无
+
+
 ## 使用
 
 打开插件支持的视频站点以后，插件自动寻找适合 HTML5 播放器播放的视频，如果找到则会将原页面的 Flash 播放器替换为 HTML5 播放器。
