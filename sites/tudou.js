@@ -23,17 +23,21 @@
         ToolKit.launchPlayer(playerPlaceholder, url);
     } else {
         var callback = ToolKit.getUniqString();
-		var requestUrl = 'http://vr.tudou.com/v2proxy/v2.js?it='+iid+'&st=52%2C53%2C54&pw=&jsonp=' + callback;
+		var requestUrl = 'http://vr.tudou.com/v2proxy/v2.js?it='+ iid +'&st=52%2C53%2C54&pw=&jsonp=' + callback;
 
         // ...
         window[callback] = function(spec) {
             var url = false;
+
             if (spec.code != FLAG_SUCCESS) {
                 log("Sorry, could not find any mp4 video.");
                 return;
             }
+
             for(var i = 0; i < spec.urls.length; i++){
-                var tmp = spec.urls[i]['url'];
+                var tmp = spec.urls[i];
+                    tmp = tmp['url'] || tmp;
+
                 if (tmp && tmp.length) {
                     url = tmp;
                 }
