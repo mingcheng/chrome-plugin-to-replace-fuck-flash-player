@@ -33,6 +33,14 @@
         }
         return realId.join('');
     }
+    
+    function getFileType(obj){
+        var keys = Object.keys(obj);
+        var type = ['mp4','3gphd'].filter(function(item){
+            return !!(keys.indexOf(item)+1);
+        });
+        return type[0];
+    }
 
     if (ToolKit.isSupportM3U8) {
         var url = "/player/getM3U8/vid/" + videoId + "/type/mp4/ts/" + (((new Date()).getTime()/1000).toString()|0) + "/v.m3u8";
@@ -44,10 +52,11 @@
         window[callbackStep1] = function(spec) {
             try {
                 var d      = new Date();
-                var fileid = getFileID(spec.data[0]['streamfileids']['3gphd'], spec.data[0]['seed']);
+                var fileType = getFileType(spec.data[0]['streamfileids']);
+                var fileid = getFileID(spec.data[0]['streamfileids'][fileType], spec.data[0]['seed']);
                 var sid    = d.getTime() + "" + (1E3 + d.getMilliseconds()) + "" + (parseInt(Math.random() * 9E3));
-                var k      = spec.data[0]['segs']['3gphd'][0]['k'];
-                var st     = spec.data[0]['segs']['3gphd'][0]['seconds'];
+                var k      = spec.data[0]['segs'][fileType][0]['k'];
+                var st     = spec.data[0]['segs'][fileType][0]['seconds'];
                 var requestStep2  = 
                     'http://f.youku.com/player/getFlvPath/sid/'+ sid +'_00/st/mp4/fileid/'+ fileid +'?K='+ k +'&hd=1&myp=0&ts=1156&ypp=0&ymovie=1&callback=' + callbackStep2;
 
