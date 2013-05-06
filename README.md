@@ -35,7 +35,8 @@ https://chrome.google.com/webstore/detail/ddfddmjlhkoabjekmjidfakeckoncmno/
 
 ### 捐赠列表
 
-1. 暂无
+1. 2013-05-02 于仁祥 $1
+2. 2013-05-03 Jerry Tian $5
 
 
 ## 使用

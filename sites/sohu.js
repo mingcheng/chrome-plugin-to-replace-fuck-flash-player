@@ -11,9 +11,13 @@
         getScript = ToolKit.getScript, log = ToolKit.log, FLAG_SUCCESS = 0,
         playerPlaceholder = document.getElementById("sohuplayer");
 
-    var appkey = 'f351515304020cad28c92f70f002261c', callback = ToolKit.getUniqString(),
-        requestUrl = 'http://api.tv.sohu.com/video/playinfo/'+ vid 
+   var appkey = 'f351515304020cad28c92f70f002261c', 
+        callback = ToolKit.getUniqString();
+
+    var requestUrl = 'http://api.tv.sohu.com/video/playinfo/'+ vid 
         + '.json?callback='+ callback +'&encoding=gbk&api_key='+ appkey +'&from=mweb&_='+ (new Date()).getTime();
+
+    alert(requestUrl);
 
     window[callback] = function(spec) {
         if (spec.data.downloadurl) {
@@ -22,6 +26,8 @@
             log("Sorry, not found any html5 video address.");
         }
     };
+
+
 
     getScript(requestUrl, function() {
         delete window[callback];
