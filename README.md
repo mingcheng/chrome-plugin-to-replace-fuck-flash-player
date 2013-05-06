@@ -20,11 +20,27 @@
 
 ## 安装
 
-本插件针对 Mac 平台下的 Chrome 浏览器开发，您可以直接访问 Chrome Store 安装本插件，插件地址：
+<del>本插件针对 Mac 平台下的 Chrome 浏览器开发，您可以直接访问 Chrome Store 安装本插件，插件地址：</del>
 
-https://chrome.google.com/webstore/detail/ddfddmjlhkoabjekmjidfakeckoncmno/
+<del>https://chrome.google.com/webstore/detail/ddfddmjlhkoabjekmjidfakeckoncmno/</del>
 
-和其他安装 Chrome 插件一样，点击安装即可。
+<del>和其他安装 Chrome 插件一样，点击安装即可。</del>
+
+因为用户隐私政策的原因（替换用户页面内容，隐藏了部分信息），Google 不让此插件上架，不过您放心此插件都是开放源代码的。
+
+如果您需要使用此插件，你需要手工导入：
+
+1、打开工具菜单下的「扩展程序」面板
+
+2、点击「开发者模式」的复选框，打开开发者模式
+
+![http://note.io/105PPe2](https://www.evernote.com/shard/s4/sh/f8a33fee-334c-4eb4-8a98-b8ab3e2764a0/7a872de8bd5c5544e03b488efc489936/res/557927da-bdeb-4971-ab2d-95e90e56ce52/skitch.png)
+
+3、从 github 上 clone 本项目的所有代码到本地
+
+4、「点击加载正在开发的扩展程序」按钮，选择上面步骤的下载下来的目录即可
+
+如果您有更好的办法，欢迎您的反馈，谢谢。
 
 
 ## 捐赠
