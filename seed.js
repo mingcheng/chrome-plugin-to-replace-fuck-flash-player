@@ -44,6 +44,10 @@
         flagElement.setAttribute("title", "Click to resume original player.");
         flagElement.innerHTML = "Embedded HTML5 Player";
 
+    var segElement = document.createElement("z");
+        segElement.setAttribute("id", "html5-player-seg");
+        segElement.innerHTML = "选择分段： ";
+
     flagElement.addEventListener("click", function(e) {
         if (replacedElement) {
             replacedElement.innerHTML = orgialHTML;
@@ -83,6 +87,20 @@
         document.body.setAttribute(ATTR_VIDEO_ADDRESS, url);
     };
 
+    var markSegs = function (index, callback) {
+        var b = function(index, callback) {
+            var link = document.createElement("a");
+            link.innerHTML = index; link.title = "选择播放第"+index +"段视频";
+            link.onclick = callback;
+            segElement.appendChild(link);
+        }
+
+        b(index, callback);
+        document.body.appendChild(segElement);
+        markSegs = b;
+    }
+
+
     function launchPlayer(element, url, success) {
         var width = element.clientWidth, height = element.clientHeight;
         var html  = 
@@ -110,6 +128,7 @@
         launchPlayer: launchPlayer,
         log: log,
         markVideoUrl: markVideoUrl,
+        markSegs: markSegs,
         getVideoUrl: function() {
              var body  = document.body, value = body.getAttribute(ATTR_VIDEO_ADDRESS);
              if (!value) {

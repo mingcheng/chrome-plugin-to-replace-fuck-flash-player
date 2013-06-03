@@ -42,6 +42,11 @@
         return type[0];
     }
 
+    function toHex(number) {
+        var str = number.toString(16);
+        return (str.length < 2) ? "0" + str : str;
+    }
+
     if (ToolKit.isSupportM3U8) {
         var url = "/player/getM3U8/vid/" + videoId + "/type/mp4/ts/" + (((new Date()).getTime()/1000).toString()|0) + "/v.m3u8";
         ToolKit.launchPlayer(document.getElementById("player"), url);
@@ -51,25 +56,47 @@
 
         window[callbackStep1] = function(spec) {
             try {
-                var d      = new Date();
-                var fileType = getFileType(spec.data[0]['streamfileids']);
-                var fileid = getFileID(spec.data[0]['streamfileids'][fileType], spec.data[0]['seed']);
-                var sid    = d.getTime() + "" + (1E3 + d.getMilliseconds()) + "" + (parseInt(Math.random() * 9E3));
-                var k      = spec.data[0]['segs'][fileType][0]['k'];
-                var st     = spec.data[0]['segs'][fileType][0]['seconds'];
-                var requestStep2  = 
-                    'http://f.youku.com/player/getFlvPath/sid/'+ sid +'_00/st/mp4/fileid/'+ fileid +'?K='+ k +'&hd=1&myp=0&ts=1156&ypp=0&ymovie=1&callback=' + callbackStep2;
+                var data = spec.data[0], d = new Date(), urls = [];
+                var fileType = getFileType(data['streamfileids']);
+                var fileid   = getFileID(data['streamfileids'][fileType], data['seed']);
+                var sid      = d.getTime() + "" + (1E3 + d.getMilliseconds()) + "" + (parseInt(Math.random() * 9E3));
 
-                getScript(requestStep2, function() {
+                // @see http://wuyuans.com/2012/08/parser-youku-video-using-java/
+                for (var i = 0, len = (data['segs'][fileType]).length; i < len; i++) {
+                    var k = data['segs'][fileType][i]['k'], 
+                    
+                        url = 'http://f.youku.com/player/getFlvPath/sid/'+ 
+                            sid + '_' + toHex(i) +'/st/'+ fileType +'/fileid/'+ 
+                            fileid.substr(0,8) + toHex(i) + fileid.substr(10, fileid.length-1) +'?K='+ 
+                            k +'&callback=' + callbackStep2;
+
+                    urls[i] = url;
+                }
+
+                getScript(urls[0], function() {
                     log("Finished YOUKU step2 request, almost here!");
-                    delete window[callbackStep2];
+                    //delete window[callbackStep2];
                 });
+
+                for (var i = 0, len = urls.length; i < len; i++) {
+                    ~function() {
+                        var url = urls[i];
+                        ToolKit.markSegs(i+1, function() {
+                            getScript(url, function() {
+                                ToolKit.log("Change video location to " + url);
+                            });
+                        });
+                    }();
+                }
+                window.ToolKit = ToolKit;
+
             } catch(e) {
                 //console.error(e);
             }
        }
 
        window[callbackStep2] = function(spec) {
+            //console.info(spec);
             var url = spec[0]['server'];
             if (url.length) {
                 ToolKit.launchPlayer(document.getElementById("player"), url);
