@@ -48,8 +48,13 @@ z#html5-player-seg {
 
 z#html5-player-seg a {
     padding: 0 5px;
-    color: #fff;
+    color: #ccc;
     font-size: 14px!important;
-    font-weight: bold;
+}
+
+z#html5-player-seg a.current {
+    font-weight: bold!important;
+    color: #cc3333!important;
+    text-decoration: underline;
 }
 

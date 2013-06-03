@@ -89,9 +89,18 @@
 
     var markSegs = function (index, callback) {
         var b = function(index, callback) {
-            var link = document.createElement("a");
+            var link = document.createElement("a"), call = callback;
             link.innerHTML = index; link.title = "选择播放第"+index +"段视频";
-            link.onclick = callback;
+            link.onclick = function(e) {
+                var links = segElement.getElementsByTagName("a");
+
+                for (var i = 0, len = links.length; i < len; i++) {
+                    links[i].className = "";
+                }
+
+                links[index-1].className = "current";
+                call();
+            };
             segElement.appendChild(link);
         }
 
@@ -100,6 +109,10 @@
         markSegs = b;
     }
 
+    var selectSegs = function(index) {
+        var links = segElement.getElementsByTagName("a");
+        links[index].onclick();
+    }
 
     function launchPlayer(element, url, success) {
         var width = element.clientWidth, height = element.clientHeight;
@@ -129,6 +142,7 @@
         log: log,
         markVideoUrl: markVideoUrl,
         markSegs: markSegs,
+        selectSegs: selectSegs,
         getVideoUrl: function() {
              var body  = document.body, value = body.getAttribute(ATTR_VIDEO_ADDRESS);
              if (!value) {

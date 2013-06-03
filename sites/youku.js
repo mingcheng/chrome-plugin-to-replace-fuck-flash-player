@@ -73,23 +73,27 @@
                     urls[i] = url;
                 }
 
-                getScript(urls[0], function() {
-                    log("Finished YOUKU step2 request, almost here!");
-                    //delete window[callbackStep2];
-                });
 
-                for (var i = 0, len = urls.length; i < len; i++) {
-                    ~function() {
-                        var url = urls[i];
-                        ToolKit.markSegs(i+1, function() {
-                            getScript(url, function() {
-                                ToolKit.log("Change video location to " + url);
+
+                if (urls.length > 1) {
+                    for (var i = 0, len = urls.length; i < len; i++) {
+                        ~function() {
+                            var url = urls[i];
+                            ToolKit.markSegs(i+1, function() {
+                                getScript(url, function() {
+                                    ToolKit.log("Change video location to " + url);
+                                });
                             });
-                        });
-                    }();
-                }
-                window.ToolKit = ToolKit;
+                        }();
+                    }
 
+                    ToolKit.selectSegs(0);
+                } else {
+                    getScript(urls[0], function() {
+                        log("Finished YOUKU step2 request, almost here!");
+                        //delete window[callbackStep2];
+                    });
+                }
             } catch(e) {
                 //console.error(e);
             }
