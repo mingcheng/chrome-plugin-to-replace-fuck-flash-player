@@ -54,6 +54,7 @@
         }
 
         flagElement.parentNode.removeChild(flagElement);
+        replacedElement.parentNode.removeChild(replacedElement);
     });
 
     function getScript(url, success, error) {
