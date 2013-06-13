@@ -36,10 +36,11 @@
     
     function getFileType(obj){
         var keys = Object.keys(obj);
-        var type = ['mp4','3gphd'].filter(function(item){
+        var type = ['mp4','3gphd', '3gp'].filter(function(item){
             return !!(keys.indexOf(item)+1);
         });
-        return type[0];
+
+        return type[0] || 'mp4';
     }
 
     function toHex(number) {

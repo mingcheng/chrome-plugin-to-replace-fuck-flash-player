@@ -17,8 +17,7 @@
     var requestUrl = 'http://api.tv.sohu.com/video/playinfo/'+ vid 
         + '.json?callback='+ callback +'&encoding=gbk&api_key='+ appkey +'&from=mweb&_='+ (new Date()).getTime();
 
-    alert(requestUrl);
-
+    //alert(requestUrl);
     window[callback] = function(spec) {
         if (spec.data.downloadurl) {
             ToolKit.launchPlayer(playerPlaceholder, spec.data.downloadurl);
@@ -26,8 +25,6 @@
             log("Sorry, not found any html5 video address.");
         }
     };
-
-
 
     getScript(requestUrl, function() {
         delete window[callback];
