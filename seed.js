@@ -131,6 +131,18 @@
         element.innerHTML = html;
         markVideoUrl(url);
 
+		document.getElementById("my_video_1").addEventListener("ended", 
+			function(e) {
+				idSeg = document.getElementById("html5-player-seg");
+				var cur = parseInt(idSeg.getElementsByClassName("current")[0].innerHTML);
+				var len = idSeg.getElementsByTagName("a").length;
+				log("Event ended comes: cur=" + cur + " len=" + len);
+				if (cur < len) {
+					idSeg.getElementsByTagName("a")[cur].click();
+				}
+			}
+		);
+		
         loadCSS(PLAYER_CSS_URL);
         getScript(PLAYER_SCRIPT_URL, success);
     };
